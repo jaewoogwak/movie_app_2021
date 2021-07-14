@@ -53,3 +53,4 @@ export default App;
 // component는 재사용 가능하다. 
 
 // map은 array의 각 item에 function을 적용하고 array를 반환한다!
+// !!!
