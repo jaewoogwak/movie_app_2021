@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <App />,
+  document.getElementById('potato')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// react application이 하나의 component만을 rendering 해야한다.
+// component를 작성할 때 마다 import React from "react" 써주기
+// 써주지 않으면 react는 jsx가 있는 component를 사용하는 것을 이해하지 못함!
+// 컴포넌트는 HTML을 반환하는 함수다.
+// 이런 컴포넌트들을 app에 넣어주면 된다
+// new!!
