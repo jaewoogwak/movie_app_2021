@@ -1,49 +1,37 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-
-function Food({ name, picture }) {
-  return (
-    <div>
-      <h3>I like {name}!!</h3>
-      <img src={picture} alt ={name}/>
-    </div>
-  );
-}
-const foodILike = [
-  {
-    id: 1,
-    name: "ramen",
-    image: "https://assets.bonappetit.com/photos/5e3c7a3c866b940008106763/1:1/w_960,c_limit/HLY-Veggie-Ramen-16x9.jpg"
-  },
-  {
-    id: 2,
-    name: "chiken",
-    image: "https://images.herzindagi.info/image/2019/Jan/chiken-benefits-for-health.jpg"
-  },
-  {
-    id: 3,
-    name: "kimbap",
-    image: "https://www.seriouseats.com/thmb/mUcGNC5UTA0OSzGpmwWr-m2FxAI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2020__01__20200122-gimbap-vicky-wasik-24-f5ed1075f35846a29e0812ee053a1bf8.jpg"
-  },
-  {
-    id: 4,
-    name: "jjajangmen",
-    image: "https://cdn.mindgil.com/news/photo/202101/70530_6285_1006.jpg"
+class App extends React.Component {
+  state = {
+    count: 0
   }
-];
-
-function App() {
-  return (
+  add = () => {
+    console.log("add");
+    this.setState(current => ({count : current.count + 1}));
+  }
+  minus = () => {
+    console.log("minus");
+    this.setState(current => ({count : current.count - 1}));
+  }
+  componentDidMount() {
+    console.log("Component rendered");
+  }
+  componentDidUpdate() {
+    console.log("I just updated");
+  }
+  componentWillUnmount() {
+    console.log("Goodbye");
+  }
+  render() {
+    console.log("I'm rendering");
+    return (
     <div>
-      {
-        // !!! dish는 object !!!
-        foodILike.map(dish => <Food key = {dish.id} name={dish.name} picture={dish.image} />)
-      }
-
-    </div>
-  );
+      <h1> The number is {this.state.count}</h1>
+      <button onClick = {this.add}> add </button>
+      <button onClick = {this.minus}> minus </button>
+    </div>);
+  }
 }
-
 export default App;
 
 // component에 정보를 보낼 수 있다
@@ -51,3 +39,23 @@ export default App;
 
 // map은 array의 각 item에 function을 적용하고 array를 반환한다!
 // !!!
+
+// git push -u origin master
+
+// react는 자동으로 모든 class componenet의  render method를 실행하려고 함.
+
+// function -> class
+// class App 에서는 state를 사용할 수 있다.
+// state는 변하는 데이터. 
+// state is object !
+// component의 data를 동적으로 바꿀 수 있다.
+
+// User call 'setState' then React refresh 'state' and call 'render function'
+// setState를 사용해야 state를 새로 가져오고 render function을 호출한다
+// 즉 setState를 사용하지 않으면 새로운 state와 render function이 호출되지 않음
+
+// state에 의존하지 않아야 한다.
+// 그래서 current를 사용!
+// 또한 current를
+
+//component life cycle
