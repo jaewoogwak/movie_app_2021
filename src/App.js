@@ -4,7 +4,7 @@ import React from "react";
 function Food({ name, picture }) {
   return (
     <div>
-      <h3>I like {name}</h3>
+      <h3>I like {name}!!</h3>
       <img src={picture} alt ={name}/>
     </div>
   );
