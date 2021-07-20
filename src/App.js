@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import "./Movie.css";
 
 class App extends React.Component {
   state = {
     isLoading: true,
-    movies : []
+    movies: []
   };
 
   getMovies = async () => {
@@ -15,7 +16,7 @@ class App extends React.Component {
       }
     } = await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=rating");
     console.log(movies);
-    this.setState({movies, isLoading : false})
+    this.setState({ movies, isLoading: false })
   }
   componentDidMount() {
     this.getMovies();
@@ -24,23 +25,31 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div>{isLoading ? "Loading" : movies.map(movie => {
-        console.log(movie);
-        return (
-          <Movie
-          key = {movie.id}
-          id = {movie.id}
-          year = {movie.year}
-          title = {movie.title}
-          summary = {movie.summary}
-          poster = {movie.medium_cover_image}
-          />
-        ) 
-      })}</div> //map은 항상 뭔가를 리턴해줘야됨 
-    );
+      <section className="container">{isLoading ?
+        (
+          <div className="loader">
+            <span className="loader_text">Loading...</span>
+          </div>
+        ) : (
+          movies.map(movie => (
+            <Movie
+              key={movie.id}
+              id={movie.id}
+              year={movie.year}
+              title={movie.title}
+              summary={movie.summary}
+              poster={movie.medium_cover_image}
+              genres = {movie.genres}
+            />
+          ))
+        )
+      }</section>
+    )
   }
-}
+};
+
 export default App;
+
 
 // component에 정보를 보낼 수 있다
 // component는 재사용 가능하다. 
@@ -50,10 +59,10 @@ export default App;
 
 // git push -u origin master
 
-// react는 자동으로 모든 class componenet의  render method를 실행하려고 함.
+// react는 자동으로 모든 className componenet의  render method를 실행하려고 함.
 
-// function -> class
-// class App 에서는 state를 사용할 수 있다.
+// function -> className
+// className App 에서는 state를 사용할 수 있다.
 // state는 변하는 데이터. 
 // state is object !
 // component의 data를 동적으로 바꿀 수 있다.
