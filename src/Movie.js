@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Movie.css";
-
+import "./App.css";
 
 function Movie({ id, year, title, summary, poster, genres }) {
     return (
@@ -10,10 +10,10 @@ function Movie({ id, year, title, summary, poster, genres }) {
             <div className="movie__data">
                 <h3 className="movie__title">{title}</h3>
                 <h5 className="movie__year">{year}</h5>
-                <ul className = "genres">{genres.map((genre, index) => (
+                <ul className = "movie__genres">{genres.map((genre, index) => (
                     (<li key ={index} className = "genres__genre">{genre}</li>)
                 ))}</ul>
-                <p className="movie__summary">{summary}</p>
+                <p className="movie__summary">{summary.slice(0, 140)}...</p>
                 
             </div>
         </div>
@@ -30,3 +30,14 @@ Movie.propTypes = {
 };
 
 export default Movie;
+
+
+// npm i gh-pages
+// put "homepage" in package.JSON
+// "deploy" : "gh-pages -d bulid"
+// "predeploy" : "npm run build" <= build폴더 얻기 그리고 npm run deploy
+
+
+// npm run build (get build folder)
+// npm run deploy (update)
+
